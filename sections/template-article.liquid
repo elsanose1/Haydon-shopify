@@ -74,9 +74,9 @@
             </div>
 
           {% endfor %}
-          {% if paginate.pages > 1 %}
-            {{ paginate | default_pagination }}
-          {% endif %}
+          <div class="max-w-6xl mx-auto">
+            {% render 'pagination', pagination: paginate %}
+          </div>
         {% endpaginate %}
       </div>
     {% else %}
@@ -159,8 +159,8 @@
 <script type="application/ld+json">
   {
   "@context" : "http://schema.org",
-      "@type" : "BlogPosting",
-      "headline" : {{ article.title | json }},
+          "@type" : "BlogPosting",
+          "headline" : {{ article.title | json }},
   "articleBody" : {{ article.content | strip_html | json }},
 
   {% if article.excerpt != blank %}
@@ -173,12 +173,12 @@
   "datePublished" : {{ article.published_at | date: format: 'default' | json }},
   "dateCreated" : {{ article.created_at | date: format: 'default' | json }},
   "author" :{
-        "@type" : "Person",
-        "name" : {{ article.author | json }}
+            "@type" : "Person",
+            "name" : {{ article.author | json }}
   },
   "publisher" : {
-        "@type" : "Organtization",
-        "name" : {{ shop.name | json }}
+            "@type" : "Organtization",
+            "name" : {{ shop.name | json }}
   }
   }
 </script>
